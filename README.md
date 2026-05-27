@@ -21,7 +21,7 @@
 
 ### Установка
 
-1. Запустите `setup.bat`.
+1. Установите и запустите `https://github.com/HZrate/RootACS/releases/download/rootacs-v1.0.0/RootACS-Setup-1.0.0-Windows10-x64-realese.exe`.
 2. Подтвердите повышение прав администратора.
 3. Дождитесь завершения установки.
 
@@ -77,7 +77,7 @@
 
 ### Installation
 
-1. Run `setup.bat`.
+1. Download and run `https://github.com/HZrate/RootACS/releases/download/rootacs-v1.0.0/RootACS-Setup-1.0.0-Windows10-x64-realese.exe`.
 2. Approve the administrator elevation request.
 3. Wait for the installation to complete.
 
