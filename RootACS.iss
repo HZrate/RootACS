@@ -7,11 +7,11 @@ AppPublisher=CHANGE_ME
 AppPublisherURL=CHANGE_ME
 AppSupportURL=CHANGE_ME
 AppUpdatesURL=CHANGE_ME
-DefaultDirName={tmp}\RootACS
+DefaultDirName={autopf}\RootACS
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 Uninstallable=no
-CreateAppDir=no
+CreateAppDir=yes
 OutputDir=.
 OutputBaseFilename=RootACS-Setup-1.0.0
 Compression=lzma
@@ -24,9 +24,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
-Source: "setup.bat"; DestDir: "{tmp}\RootACS"; Flags: deleteafterinstall ignoreversion
-Source: "uninstall.bat"; DestDir: "{tmp}\RootACS"; Flags: deleteafterinstall ignoreversion
-Source: "release\*"; DestDir: "{tmp}\RootACS\release"; Flags: deleteafterinstall ignoreversion recursesubdirs createallsubdirs
+Source: "setup.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "uninstall.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RootACS-Service.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "rootacs.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Run]
-Filename: "{tmp}\RootACS\setup.bat"; Flags: waituntilterminated runhidden
+Filename: "{app}\setup.bat"; Flags: waituntilterminated runhidden

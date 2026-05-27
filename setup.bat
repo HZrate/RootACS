@@ -7,10 +7,10 @@ set "INSTALL_ROOT=%ProgramFiles%\RootACS"
 set "SERVICE_EXE=%INSTALL_ROOT%\RootACS-Service.exe"
 set "CLIENT_EXE=%INSTALL_ROOT%\rootacs.exe"
 set "UNINSTALL_EXE=%INSTALL_ROOT%\uninstall.bat"
-set "SOURCE_ROOT=%~dp0release"
-set "SOURCE_SERVICE=%SOURCE_ROOT%\RootACS-Service.exe"
-set "SOURCE_CLIENT=%SOURCE_ROOT%\rootacs.exe"
-set "SOURCE_UNINSTALL=%~dp0uninstall.bat"
+set "SCRIPT_ROOT=%~dp0"
+set "SOURCE_SERVICE=%SCRIPT_ROOT%RootACS-Service.exe"
+set "SOURCE_CLIENT=%SCRIPT_ROOT%rootacs.exe"
+set "SOURCE_UNINSTALL=%SCRIPT_ROOT%uninstall.bat"
 
 fltmc >nul 2>&1
 if errorlevel 1 (
@@ -42,9 +42,11 @@ if not exist "%INSTALL_ROOT%" (
 
 call :stop_service || goto :install_failed
 
-copy /y "%SOURCE_SERVICE%" "%SERVICE_EXE%" >nul || goto :install_failed
-copy /y "%SOURCE_CLIENT%" "%CLIENT_EXE%" >nul || goto :install_failed
-copy /y "%SOURCE_UNINSTALL%" "%UNINSTALL_EXE%" >nul || goto :install_failed
+if /I not "%SCRIPT_ROOT:~0,-1%"=="%INSTALL_ROOT%" (
+    copy /y "%SOURCE_SERVICE%" "%SERVICE_EXE%" >nul || goto :install_failed
+    copy /y "%SOURCE_CLIENT%" "%CLIENT_EXE%" >nul || goto :install_failed
+    copy /y "%SOURCE_UNINSTALL%" "%UNINSTALL_EXE%" >nul || goto :install_failed
+)
 
 sc query "%SERVICE_NAME%" >nul 2>&1
 if errorlevel 1060 (
@@ -61,7 +63,9 @@ sc start "%SERVICE_NAME%" >nul 2>&1
 call :wait_running || goto :install_failed
 
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('Installation completed.','RootACS','OK','Information') ^| Out-Null"
-start "" cmd.exe /c ping 127.0.0.1 -n 3 >nul ^& del /f /q "%~f0"
+if /I not "%SCRIPT_ROOT:~0,-1%"=="%INSTALL_ROOT%" (
+    start "" cmd.exe /c ping 127.0.0.1 -n 3 >nul ^& del /f /q "%~f0"
+)
 exit /b 0
 
 :stop_service
