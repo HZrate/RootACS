@@ -21,7 +21,7 @@
 
 ### Установка
 
-1. Запустите `setup.bat`.
+1. Установите и запустите `https://github.com/HZrate/RootACS/releases/download/rootacs-v1.0.0/RootACS-Setup-1.0.0-Windows10-x64-realese.exe`.
 2. Подтвердите повышение прав администратора.
 3. Дождитесь завершения установки.
 
@@ -35,7 +35,7 @@
 ### Использование
 
 1. Убедитесь, что служба `RootACS-Service` запущена.
-2. Запустите `rootacs.exe`.
+2. Запустите `rootacs.exe` или введите `rootacs` в терминал.
 3. Выберите целевую оболочку.
 4. Используйте консольную сессию.
 
@@ -77,7 +77,7 @@
 
 ### Installation
 
-1. Run `setup.bat`.
+1. Install and run `https://github.com/HZrate/RootACS/releases/download/rootacs-v1.0.0/RootACS-Setup-1.0.0-Windows10-x64-realese.exe`.
 2. Approve the administrator elevation request.
 3. Wait for the installation to complete.
 
@@ -91,7 +91,7 @@ The installation performs the following actions:
 ### Usage
 
 1. Ensure that the `RootACS-Service` service is running.
-2. Run `rootacs.exe`.
+2. Run `rootacs.exe` or enter `rootacs` in the terminal.
 3. Select the target shell.
 4. Use the console session.
 
