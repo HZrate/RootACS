@@ -2,7 +2,9 @@
 setlocal EnableExtensions
 
 set "SERVICE_NAME=RootACS-Service"
-set "INSTALL_ROOT=%ProgramFiles%\RootACS"
+set "INSTALL_BASE=%ProgramFiles%"
+if defined ProgramW6432 set "INSTALL_BASE=%ProgramW6432%"
+set "INSTALL_ROOT=%INSTALL_BASE%\RootACS"
 
 fltmc >nul 2>&1
 if errorlevel 1 (

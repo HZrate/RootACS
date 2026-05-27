@@ -3,7 +3,9 @@ setlocal EnableExtensions
 
 set "SERVICE_NAME=RootACS-Service"
 set "DISPLAY_NAME=RootACS Service"
-set "INSTALL_ROOT=%ProgramFiles%\RootACS"
+set "INSTALL_BASE=%ProgramFiles%"
+if defined ProgramW6432 set "INSTALL_BASE=%ProgramW6432%"
+set "INSTALL_ROOT=%INSTALL_BASE%\RootACS"
 set "SERVICE_EXE=%INSTALL_ROOT%\RootACS-Service.exe"
 set "CLIENT_EXE=%INSTALL_ROOT%\rootacs.exe"
 set "UNINSTALL_EXE=%INSTALL_ROOT%\uninstall.bat"
